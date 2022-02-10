@@ -44,6 +44,10 @@ public class OrderService {
         cartServiceIntegration.clearUserCart(username);
     }
 
+    public List<Order> findAllOrders(){
+        return ordersRepository.findAll();
+    }
+
     public List<Order> findOrdersByUsername(String username) {
         return ordersRepository.findAllByUsername(username);
     }

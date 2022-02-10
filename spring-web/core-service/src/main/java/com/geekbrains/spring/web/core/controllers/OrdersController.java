@@ -29,4 +29,10 @@ public class OrdersController {
         return orderService.findOrdersByUsername(username).stream()
                 .map(orderConverter::entityToDto).collect(Collectors.toList());
     }
+
+    @GetMapping("/allOrders")
+    public List<OrderDto> getAllOrder() {
+        return orderService.findAllOrders().stream()
+                .map(orderConverter::entityToDto).collect(Collectors.toList());
+    }
 }

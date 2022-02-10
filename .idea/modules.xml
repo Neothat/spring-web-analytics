@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-web/analytics-service/analytics-service.iml" filepath="$PROJECT_DIR$/spring-web/analytics-service/analytics-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-web/api/api.iml" filepath="$PROJECT_DIR$/spring-web/api/api.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-web/auth-service/auth-service.iml" filepath="$PROJECT_DIR$/spring-web/auth-service/auth-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-web/cart-service/cart-service.iml" filepath="$PROJECT_DIR$/spring-web/cart-service/cart-service.iml" />

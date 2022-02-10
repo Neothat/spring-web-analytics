@@ -15,6 +15,20 @@ angular.module('market-front').controller('storeController', function ($scope, $
             $scope.ProductsPage = response.data;
             $scope.paginationArray = $scope.generatePagesIndexes(1, $scope.ProductsPage.totalPages);
         });
+
+        $http({
+            url: contextPath + 'http://localhost:5555/analytics/api/v1/analytics/mostBought',
+            method: 'GET'
+        }).then(function (response) {
+            $scope.MostBought = response.data;
+        });
+
+        $http({
+            url: contextPath + 'http://localhost:5555/analytics/api/v1/analytics/mostStackable',
+            method: 'GET'
+        }).then(function (response) {
+            $scope.MostStackable = response.data;
+        });
     };
 
     $scope.generatePagesIndexes = function (startPage, endPage) {

@@ -1,7 +1,7 @@
 package com.geekbrains.spring.web.core.services;
 
-import com.geekbrains.spring.web.api.exceptions.ResourceNotFoundException;
 import com.geekbrains.spring.web.api.core.ProductDto;
+import com.geekbrains.spring.web.api.exceptions.ResourceNotFoundException;
 import com.geekbrains.spring.web.core.entities.Product;
 import com.geekbrains.spring.web.core.repositories.ProductsRepository;
 import com.geekbrains.spring.web.core.repositories.specifications.ProductsSpecifications;
@@ -12,7 +12,10 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -52,5 +55,16 @@ public class ProductsService {
         product.setPrice(productDto.getPrice());
         product.setTitle(productDto.getTitle());
         return product;
+    }
+
+
+    public List<Product> getMostPurchasedProducts() {
+        return productsRepository.getMostPurchasedProducts(LocalDateTime.now().minusMonths(1L))
+                .stream().limit(5).collect(Collectors.toList());
+    }
+
+    public List<Product> getMostStackableProducts() {
+        return productsRepository.getMostStackableProducts(LocalDateTime.now().minusDays(5L))
+                .stream().limit(5).collect(Collectors.toList());
     }
 }

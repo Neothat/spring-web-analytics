@@ -15,20 +15,6 @@ angular.module('market-front').controller('storeController', function ($scope, $
             $scope.ProductsPage = response.data;
             $scope.paginationArray = $scope.generatePagesIndexes(1, $scope.ProductsPage.totalPages);
         });
-
-        $http({
-            url: contextPath + 'http://localhost:5555/analytics/api/v1/analytics/mostBought',
-            method: 'GET'
-        }).then(function (response) {
-            $scope.MostBought = response.data;
-        });
-
-        $http({
-            url: contextPath + 'http://localhost:5555/analytics/api/v1/analytics/mostStackable',
-            method: 'GET'
-        }).then(function (response) {
-            $scope.MostStackable = response.data;
-        });
     };
 
     $scope.generatePagesIndexes = function (startPage, endPage) {
@@ -45,5 +31,16 @@ angular.module('market-front').controller('storeController', function ($scope, $
             });
     }
 
+    $scope.analytics = function (){
+        $http.get('http://localhost:5555/analytics/api/v1/analytics/mostBought').then(function (response) {
+            $scope.MostBought = response.data;
+        });
+
+        $http.get('http://localhost:5555/analytics/api/v1/analytics/mostStackable').then(function (response) {
+            $scope.MostStackable = response.data;
+        });
+    }
+
     $scope.loadProducts();
+    $scope.analytics();
 });

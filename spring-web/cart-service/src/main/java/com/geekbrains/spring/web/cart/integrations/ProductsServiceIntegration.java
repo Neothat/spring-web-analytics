@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ProductsServiceIntegration {
     private final RestTemplate restTemplate;
 
-    @Value("${com.geekbrains.spring.web.analytics.integrations.core-service.url}")
+    @Value("${integrations.core-service.url}")
     private String productServiceUrl;
 
     public Optional<ProductDto> findById(Long id) {

@@ -1,13 +1,11 @@
 package com.geekbrains.spring.web.analytics.integrations;
 
-import com.geekbrains.spring.web.api.core.OrderDto;
 import com.geekbrains.spring.web.api.core.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -15,19 +13,19 @@ public class CoreServiceIntegration {
 
     private final WebClient coreServiceWebClient;
 
-    public List<OrderDto> getAllOrders() {
+    public List<ProductDto> getMostPurchased() {
         return coreServiceWebClient.get()
-                .uri("/api/v1/orders/allOrders")
+                .uri("/api/v1/products/mostPurchased")
                 .retrieve()
                 .bodyToMono(List.class)
                 .block();
     }
 
-    public Optional<ProductDto> findById(Long id) {
-        return Optional.ofNullable(coreServiceWebClient.get()
-                .uri("/api/v1/products/" + id)
+    public List<ProductDto> getMostStackable() {
+        return coreServiceWebClient.get()
+                .uri("/api/v1/products/mostStackable")
                 .retrieve()
-                .bodyToMono(ProductDto.class)
-                .block());
+                .bodyToMono(List.class)
+                .block();
     }
 }

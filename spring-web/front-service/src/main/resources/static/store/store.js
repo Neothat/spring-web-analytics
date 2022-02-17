@@ -31,5 +31,16 @@ angular.module('market-front').controller('storeController', function ($scope, $
             });
     }
 
+    $scope.analytics = function (){
+        $http.get('http://localhost:5555/analytics/api/v1/analytics/mostBought').then(function (response) {
+            $scope.MostBought = response.data;
+        });
+
+        $http.get('http://localhost:5555/analytics/api/v1/analytics/mostStackable').then(function (response) {
+            $scope.MostStackable = response.data;
+        });
+    }
+
     $scope.loadProducts();
+    $scope.analytics();
 });

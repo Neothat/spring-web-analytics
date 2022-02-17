@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -9,12 +10,14 @@
         <module name="cart-service" />
         <module name="auth-service" />
         <module name="front-service" />
+        <module name="analytics-service" />
         <module name="api" />
         <module name="core-service" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="analytics-service" target="11" />
       <module name="api" target="11" />
       <module name="auth-service" target="11" />
       <module name="cart-service" target="11" />
@@ -26,6 +29,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="analytics-service" options="-parameters" />
       <module name="auth-service" options="-parameters" />
       <module name="cart-service" options="-parameters" />
       <module name="core-service" options="-parameters" />

@@ -44,10 +44,14 @@ create table order_items
 );
 
 insert into orders (username, total_price, address, phone)
-values ('bob', 200, 'address', '12345');
+values ('bob', 200, 'address', '12345'),
+        ('bob', 800, 'address2', '123451'),
+        ('bob', 800, 'address3', '123452');
 
 insert into order_items (product_id, order_id, quantity, price_per_product, price)
-values (1, 1, 2, 100, 200);
+values (1, 1, 2, 100, 200),
+        (2, 2, 4, 200, 800),
+        (2, 3, 4, 200, 800);
 
 
 
